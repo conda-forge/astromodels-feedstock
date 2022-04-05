@@ -1,5 +1,5 @@
 {% set name = "astromodels" %}
-{% set version = "2.2.2" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/astromodels-{{ version }}.tar.gz
-  sha256: 9432f8aed4728614e96709619df6ecec9a23ad4adc312c37200e6ce40bd3daf1
+  sha256: fa10a46a4f4fbab7bcbe833ef0278db6c18e01e53b1759a102c13ae54c03ee47
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
