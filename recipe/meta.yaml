@@ -1,5 +1,5 @@
 {% set name = "astromodels" %}
-{% set version = "2.3.2" %}
+{% set version = "2.3.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/astromodels-{{ version }}.tar.gz
-  sha256: b2da4c1836b3f21fc4b7dd67b29b170f56af7fcf666cbe66a9ff53ef039084a7
+  sha256: 9ee3c62edfa36860be4c1affc68e6e5cd7c879ecb816cb17a686620ab5d25cef
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
@@ -33,6 +33,7 @@ requirements:
     - omegaconf
     - pandas
     - python
+    - rich
     - pyyaml >=5.1
     - scipy >=0.14
     - pytables
