@@ -33,6 +33,7 @@ requirements:
     - omegaconf
     - pandas
     - python
+    - rich
     - pyyaml >=5.1
     - scipy >=0.14
     - pytables
