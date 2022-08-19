@@ -27,7 +27,7 @@ requirements:
     - dill
     - future
     - h5py
-    - interpolation
+    - interpolation >=2.2.3
     - numba
     - numpy >=1.6
     - omegaconf
