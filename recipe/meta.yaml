@@ -1,5 +1,5 @@
 {% set name = "astromodels" %}
-{% set version = "2.3.8" %}
+{% set version = "2.3.9" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/astromodels-{{ version }}.tar.gz
-  sha256: 981f68c4ccaa6a95e128ff3014396754f9ed4af363dcceef2e67f63b9014a9fb
+  sha256: d2ec683d7fb625e9c230a22d5125f54b5771604df8535661f47b6efdc14430bf
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
@@ -27,7 +27,7 @@ requirements:
     - dill
     - future
     - h5py
-    - interpolation
+    - interpolation >=2.2.3
     - numba
     - numpy >=1.6
     - omegaconf
