@@ -38,6 +38,7 @@ requirements:
     - scipy >=0.14
     - pytables
     - {{ pin_compatible('numpy') }}
+    - joblib
 
 test:
   imports:
