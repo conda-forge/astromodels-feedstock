@@ -10,43 +10,42 @@ source:
   sha256: eeb23c30002073d6650289bfb35b80b42eb08336db40da40298fe686c6070587
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 2
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
   host:
+    - python
     - numpy
     - pip
-    - python
   run:
-    - astropy >=1.2
-    - colorama
-    - dill
-    - future
-    - h5py
-    - interpolation >=2.2.3
-    - numba
-    - numpy >=1.6
-    - omegaconf
-    - pandas
     - python
-    - rich
+    - numpy >=1.6
     - pyyaml >=5.1
     - scipy >=0.14
+    - astropy >=1.2
+    - dill
+    - future
+    - interpolation >=2.2.3
+    - numba >0.52
+    - h5py
+    - pandas
     - pytables
-    - {{ pin_compatible('numpy') }}
+    - colorama
+    - omegaconf
+    - rich
     - joblib
 
 test:
   imports:
     - astromodels
-  requires:
-    - pip
   commands:
     - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/threeml/astromodels
