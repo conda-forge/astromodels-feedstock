@@ -27,7 +27,7 @@ requirements:
     - future
     - h5py
     - interpolation >=2.2.3
-    - numba
+    - numba <0.58,>=0.57
     - numpy >=1.6
     - omegaconf
     - pandas
