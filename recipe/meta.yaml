@@ -8,11 +8,14 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/astromodels-{{ version }}.tar.gz
   sha256: cdf305d32ecad028842b99a940076972a112674fc6252a312f9e9521d81cc8a5
+  patches:
+    - versioneer.patch
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
   skip: true  # [win]
+  skip: true  # [py38]
 
 requirements:
   build:
