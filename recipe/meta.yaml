@@ -1,5 +1,5 @@
 {% set name = "astromodels" %}
-{% set version = "2.4.1" %}
+{% set version = "2.4.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,16 +7,17 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/astromodels-{{ version }}.tar.gz
-  sha256: eeb23c30002073d6650289bfb35b80b42eb08336db40da40298fe686c6070587
+  sha256: cdf305d32ecad028842b99a940076972a112674fc6252a312f9e9521d81cc8a5
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 0
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
   host:
     - python
     - numpy
@@ -30,7 +31,7 @@ requirements:
     - dill
     - future
     - interpolation >=2.2.3
-    - numba <0.58,>=0.57
+    - numba
     - h5py
     - pandas
     - pytables
