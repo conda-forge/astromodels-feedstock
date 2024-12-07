@@ -13,7 +13,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 2
   skip: true  # [win]
   skip: true  # [py==38]
 
@@ -30,7 +30,7 @@ requirements:
     - numpy >=1.6
     - pyyaml >=5.1
     - scipy >=0.14
-    - astropy >=1.2
+    - astropy-base >=1.2
     - dill
     - future
     - interpolation >=2.2.6
