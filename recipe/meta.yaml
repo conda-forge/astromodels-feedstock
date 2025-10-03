@@ -1,5 +1,5 @@
 {% set name = "astromodels" %}
-{% set version = "2.4.3" %}
+{% set version = "2.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/astromodels-{{ version }}.tar.gz
-  sha256: 3fb5ac76ff31617805c508b42077b2f03a7fd2ff876454fabe5d4ff304a94f16
+  sha256: 10b29d6f2a9857ae15e67314130246bd05ee2e94ccb8a0a3540f3072b1fc6db8
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -25,6 +25,7 @@ requirements:
     - pip
     - setuptools
   run:
+    - versioneer
     - astropy >=1.2
     - python
     - numpy >=1.6
