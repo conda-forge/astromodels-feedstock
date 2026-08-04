@@ -1,5 +1,5 @@
 {% set name = "astromodels" %}
-{% set version = "2.4.3" %}
+{% set version = "2.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/astromodels-{{ version }}.tar.gz
-  sha256: 3fb5ac76ff31617805c508b42077b2f03a7fd2ff876454fabe5d4ff304a94f16
+  sha256: 8e9e3a277b24eded7a4e7149857df0be4abe70921a219c15a4d55dc1a935e13e
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -25,9 +25,11 @@ requirements:
     - pip
     - setuptools
   run:
-    - astropy >=1.2
+    - llvmlite <0.46
+    - versioneer
+    - astropy >=7.2
     - python
-    - numpy >=1.6
+    - numpy >=1.26
     - pyyaml >=5.1
     - scipy >=0.14
     - astropy-base >=1.2
