@@ -24,6 +24,7 @@ requirements:
     - numpy
     - pip
     - setuptools
+    - versioneer
   run:
     - llvmlite <0.46
     - versioneer
