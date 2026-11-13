@@ -1,0 +1,93 @@
+context:
+  name: astromodels
+  version: 2.6.0 
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/a/astromodels/astromodels-${{ version }}.tar.gz
+  sha256: 8e9e3a277b24eded7a4e7149857df0be4abe70921a219c15a4d55dc1a935e13e
+ 
+build:
+  skip:
+  - win
+  - match(python, "<3.11")
+  - match(python, ">=3.14")
+  script:
+    - rm -rf pfiles
+    - pip install --verbose --no-deps --no-build-isolation --ignore-installed .
+  number: 1
+
+requirements:
+  build:
+    - ${{ stdlib("c") }}
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - ${{ compiler('fortran') }}
+
+  host:
+    - python
+    - pip
+    - setuptools
+    - if: python >="3.12"
+      then: numpy >=2.1
+      else: numpy >=1.26
+    - versioneer
+
+  run:
+    - python
+    - if: python >= "3.12"
+      then: numpy >=2.1
+      else: numpy >=1.26
+    - pyyaml
+    - astropy-base >=7.2
+    - scipy
+    - pytables
+    - pandas
+    - dill
+    - numba
+    - h5py >=3.9
+    - omegaconf
+    - rich
+    - versioneer
+    - if: (osx and x86_64)
+      then: llvmlite <0.46
+
+  run_constraints:
+    - if: not (linux and aarch64) and match(python, ">=3.14")
+      then: xspec >12.15.1
+    - if: not (linux and aarch64) and match(python, "<3.14")
+      then: xspec <13.0.0
+
+tests:
+  - python:
+      imports:
+        - astromodels
+  - script:
+      - python -m pytest -vv --pyargs astromodels -c pyproject.toml -n auto --dist worksteal
+
+    files:
+      source:
+        - pyproject.toml
+    requirements:
+      run:
+        - pytest
+        - pytest-xdist
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Models for astronomy and astrophysics
+  description: |
+    Astromodels contains models to be used in likelihood or
+    Bayesian analysis in astronomy and astrophysics
+
+  homepage: https://github.com/threeml/astromodels
+  repository: https://github.com/threeML/astromodels
+  documentation: https://astromodels.readthedocs.io
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
